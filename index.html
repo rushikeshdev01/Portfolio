@@ -41,12 +41,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <header class="site-nav">
       <div class="nav-inner">
         <a href="#home" class="logo"
@@ -59,6 +61,12 @@
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
+        <a
+          href="resume.pdf"
+          download
+          class="btn btn-primary btn-small nav-resume"
+          >Resume</a
+        >
         <button
           class="nav-toggle"
           id="navToggle"
@@ -73,15 +81,18 @@
     <main>
       <!-- ================= HERO ================= -->
       <section id="home" class="hero">
+        <canvas id="particles" class="particles-canvas"></canvas>
+        <div class="hero-glow"></div>
         <div class="wrap">
           <span class="hero-eyebrow"
             ><span class="pulse"></span>Open to internships &amp;
             collaborations</span
           >
           <h1>
-            Rushikesh Dev — <span class="accent-text">AI/ML Engineer</span>
+            Hi, I'm <span class="gradient-text">Rushikesh Dev</span><br />an
+            AI/ML Engineer
           </h1>
-          <p class="role">Generative AI &amp; LLM Developer, Pune, India</p>
+          <p class="role">Generative AI &amp; LLM Developer · Pune, India</p>
           <p class="hero-about">
             I'm a B.Tech AI &amp; ML student passionate about building AI
             solutions for real-world problems. I enjoy working with Machine
@@ -146,18 +157,33 @@
               GitHub
             </a>
           </div>
+
+          <a href="#about" class="scroll-indicator">
+            <span>Scroll Down</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </a>
         </div>
       </section>
 
       <!-- ================= ABOUT ================= -->
       <section id="about">
         <div class="wrap">
-          <div class="section-inner">
+          <div class="section-inner reveal">
             <span class="eyebrow">About Me</span>
-            <h2 class="section-heading">A little about my journey</h2>
+            <h2 class="section-heading">
+              Passionate about building
+              <span class="gradient-text">real&#8209;world AI</span>
+            </h2>
           </div>
           <div class="about-grid">
-            <div class="about-text">
+            <div class="about-text reveal">
               <p>
                 I'm a B.Tech AI &amp; ML student passionate about building AI
                 solutions for real-world problems. My work sits at the
@@ -172,8 +198,83 @@
                 things that actually work end-to-end, and grow as an AI
                 engineer.
               </p>
+
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m14.5 3.5 6 6L18 12l-6-6 2.5-2.5Z" />
+                      <path d="M13 6 5 14v3l-2 2 2 2 2-2h3l8-8" />
+                    </svg>
+                  </div>
+                  <div class="feature-title">Builder Mindset</div>
+                  <div class="feature-desc">
+                    Ships end-to-end projects, not just notebooks
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" />
+                    </svg>
+                  </div>
+                  <div class="feature-title">Fast Learner</div>
+                  <div class="feature-desc">
+                    Picks up new AI tools and frameworks quickly
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 3" />
+                    </svg>
+                  </div>
+                  <div class="feature-title">Reliable</div>
+                  <div class="feature-desc">
+                    Focused on shipping things that actually work
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path
+                        d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+                      />
+                    </svg>
+                  </div>
+                  <div class="feature-title">Team Player</div>
+                  <div class="feature-desc">
+                    Collaborates well across design, backend, and ML
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="edu-card">
+            <div class="edu-card reveal">
               <span class="edu-badge">EDUCATION</span>
               <div class="edu-degree">
                 B.Tech, Artificial Intelligence &amp; Machine Learning
@@ -181,9 +282,9 @@
               <div class="edu-school">
                 G.H. Raisoni Society's College of Engineering and Management
               </div>
-              <div class="edu-school">Pune, India</div>
+              <div class="edu-school edu-school-muted">Pune, India</div>
               <div class="edu-meta">
-                <span>Expected 2027</span>
+                <span>Expected June 2027</span>
                 <span>Undergraduate</span>
               </div>
             </div>
@@ -192,11 +293,13 @@
       </section>
 
       <!-- ================= SKILLS ================= -->
-      <section id="skills" style="background: var(--bg-soft)">
+      <section id="skills">
         <div class="wrap">
-          <div class="section-inner">
+          <div class="section-inner reveal">
             <span class="eyebrow">Skills</span>
-            <h2 class="section-heading">Technical Skills</h2>
+            <h2 class="section-heading">
+              Technical <span class="gradient-text">Skills</span>
+            </h2>
             <p class="section-lede">
               The languages, frameworks, and tools I reach for when turning an
               idea into a working AI system.
@@ -204,7 +307,7 @@
           </div>
 
           <div class="skills-grid">
-            <div class="skill-card">
+            <div class="skill-card reveal">
               <h3>Languages &amp; Fundamentals</h3>
               <div class="tag-row">
                 <span class="tag">Python</span>
@@ -212,7 +315,7 @@
                 <span class="tag">Data Structures</span>
               </div>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal">
               <h3>Machine Learning &amp; Deep Learning</h3>
               <div class="tag-row">
                 <span class="tag">Machine Learning</span>
@@ -221,7 +324,7 @@
                 <span class="tag">Scikit-learn</span>
               </div>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal">
               <h3>Generative AI &amp; LLMs</h3>
               <div class="tag-row">
                 <span class="tag">Generative AI</span>
@@ -231,7 +334,7 @@
                 <span class="tag">Hugging Face</span>
               </div>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal">
               <h3>Tools &amp; Platforms</h3>
               <div class="tag-row">
                 <span class="tag">GitHub</span>
@@ -240,34 +343,17 @@
               </div>
             </div>
           </div>
-
-          <div class="skills-stats">
-            <div class="stat">
-              <div class="num">3</div>
-              <div class="label">Core Languages</div>
-            </div>
-            <div class="stat">
-              <div class="num">4</div>
-              <div class="label">ML / DL Tools</div>
-            </div>
-            <div class="stat">
-              <div class="num">5</div>
-              <div class="label">GenAI &amp; LLM Tools</div>
-            </div>
-            <div class="stat">
-              <div class="num">4</div>
-              <div class="label">Projects Shipped</div>
-            </div>
-          </div>
         </div>
       </section>
 
       <!-- ================= PROJECTS ================= -->
       <section id="projects">
         <div class="wrap">
-          <div class="section-inner">
+          <div class="section-inner reveal">
             <span class="eyebrow">Projects</span>
-            <h2 class="section-heading">Featured Projects</h2>
+            <h2 class="section-heading">
+              Featured <span class="gradient-text">Projects</span>
+            </h2>
             <p class="section-lede">
               A selection of things I've built while learning to ship AI
               end-to-end — from computer vision to multi-agent LLM systems.
@@ -275,7 +361,7 @@
           </div>
 
           <div class="projects-list">
-            <article class="project-card">
+            <article class="project-card reveal">
               <div class="project-head">
                 <h3 class="project-title">AI Real-Time Gym Trainer</h3>
                 <a
@@ -307,7 +393,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal">
               <div class="project-head">
                 <h3 class="project-title">Silent Error Detector</h3>
                 <a
@@ -340,7 +426,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal">
               <div class="project-head">
                 <h3 class="project-title">
                   Multi-Agent Contract Intelligence Platform
@@ -375,7 +461,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal">
               <div class="project-head">
                 <h3 class="project-title">The Paper Portfolio</h3>
                 <a
@@ -410,11 +496,13 @@
       </section>
 
       <!-- ================= CONTACT ================= -->
-      <section id="contact" style="background: var(--bg-soft)">
+      <section id="contact">
         <div class="wrap">
-          <div class="section-inner">
+          <div class="section-inner reveal">
             <span class="eyebrow">Contact</span>
-            <h2 class="section-heading">Let's Connect</h2>
+            <h2 class="section-heading">
+              Let's <span class="gradient-text">Connect</span>
+            </h2>
             <p class="section-lede">
               I'm always open to discussing internships, collaborations, or
               interesting problems in AI &amp; ML. Reach out — I read every
@@ -423,7 +511,7 @@
           </div>
 
           <div class="contact-grid">
-            <div class="contact-cards">
+            <div class="contact-cards reveal">
               <a class="contact-card" href="mailto:rushikeshdev75@gmail.com">
                 <div class="contact-icon">
                   <svg
@@ -479,7 +567,7 @@
               </a>
             </div>
 
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form reveal" id="contactForm">
               <div class="form-row">
                 <label for="name">Name</label>
                 <input
@@ -509,7 +597,7 @@
                   required
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary btn-full">
                 Send Message
               </button>
               <p class="form-note">
