@@ -47,12 +47,15 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <header class="site-nav">
       <div class="nav-inner">
         <a href="#home" class="logo"
-          >Rushikesh<span class="accent-dot">.</span></a
+          >Portfolio<span class="accent-dot">.</span></a
         >
         <nav class="nav-links" id="navLinks">
           <a href="#home">Home</a>
@@ -61,12 +64,6 @@
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a
-          href="resume.pdf"
-          download
-          class="btn btn-primary btn-small nav-resume"
-          >Resume</a
-        >
         <button
           class="nav-toggle"
           id="navToggle"
@@ -198,81 +195,6 @@
                 things that actually work end-to-end, and grow as an AI
                 engineer.
               </p>
-
-              <div class="feature-grid">
-                <div class="feature-card">
-                  <div class="feature-icon">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="m14.5 3.5 6 6L18 12l-6-6 2.5-2.5Z" />
-                      <path d="M13 6 5 14v3l-2 2 2 2 2-2h3l8-8" />
-                    </svg>
-                  </div>
-                  <div class="feature-title">Builder Mindset</div>
-                  <div class="feature-desc">
-                    Ships end-to-end projects, not just notebooks
-                  </div>
-                </div>
-                <div class="feature-card">
-                  <div class="feature-icon">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-                      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" />
-                    </svg>
-                  </div>
-                  <div class="feature-title">Fast Learner</div>
-                  <div class="feature-desc">
-                    Picks up new AI tools and frameworks quickly
-                  </div>
-                </div>
-                <div class="feature-card">
-                  <div class="feature-icon">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-                      <circle cx="12" cy="12" r="9" />
-                      <path d="M12 7v5l3 3" />
-                    </svg>
-                  </div>
-                  <div class="feature-title">Reliable</div>
-                  <div class="feature-desc">
-                    Focused on shipping things that actually work
-                  </div>
-                </div>
-                <div class="feature-card">
-                  <div class="feature-icon">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path
-                        d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
-                      />
-                    </svg>
-                  </div>
-                  <div class="feature-title">Team Player</div>
-                  <div class="feature-desc">
-                    Collaborates well across design, backend, and ML
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="edu-card reveal">
               <span class="edu-badge">EDUCATION</span>
@@ -284,7 +206,7 @@
               </div>
               <div class="edu-school edu-school-muted">Pune, India</div>
               <div class="edu-meta">
-                <span>Expected June 2027</span>
+                <span>June 2027</span>
                 <span>Undergraduate</span>
               </div>
             </div>
