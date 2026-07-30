@@ -1,75 +1,133 @@
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Custom animated cursor (dot + lagging ring), desktop only
+const cursorDot = document.getElementById("cursorDot");
+const cursorRing = document.getElementById("cursorRing");
+const hasFinePointer = window.matchMedia(
+  "(hover: hover) and (pointer: fine)",
+).matches;
+
+if (cursorDot && cursorRing && hasFinePointer) {
+  let mouseX = 0,
+    mouseY = 0;
+  let ringX = 0,
+    ringY = 0;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + "px";
+    cursorDot.style.top = mouseY + "px";
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    cursorRing.style.left = ringX + "px";
+    cursorRing.style.top = ringY + "px";
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  const interactiveSelectors =
+    "a, button, input, textarea, .project-card, .skill-card, .contact-card";
+  document.querySelectorAll(interactiveSelectors).forEach((el) => {
+    el.addEventListener("mouseenter", () =>
+      cursorRing.classList.add("cursor-active"),
+    );
+    el.addEventListener("mouseleave", () =>
+      cursorRing.classList.remove("cursor-active"),
+    );
+  });
+
+  document.body.style.cursor = "none";
+  document.querySelectorAll("a, button, input, textarea").forEach((el) => {
+    el.style.cursor = "none";
+  });
+}
 
 // Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open', isOpen);
-  navToggle.setAttribute('aria-expanded', isOpen);
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+navToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  navToggle.classList.toggle("open", isOpen);
+  navToggle.setAttribute("aria-expanded", isOpen);
 });
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    navToggle.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
   });
 });
 
 // Active link highlighting on scroll
-const sections = document.querySelectorAll('main section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
-const activeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navAnchors.forEach(a => a.classList.remove('active'));
-      const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (match) match.classList.add('active');
-    }
-  });
-}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-sections.forEach(sec => activeObserver.observe(sec));
+const sections = document.querySelectorAll("main section[id]");
+const navAnchors = document.querySelectorAll(".nav-links a");
+const activeObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach((a) => a.classList.remove("active"));
+        const match = document.querySelector(
+          `.nav-links a[href="#${entry.target.id}"]`,
+        );
+        if (match) match.classList.add("active");
+      }
+    });
+  },
+  { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+);
+sections.forEach((sec) => activeObserver.observe(sec));
 
 // Reveal on scroll
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 },
+);
+document
+  .querySelectorAll(".reveal")
+  .forEach((el) => revealObserver.observe(el));
 
 // Scroll progress bar
-const scrollProgress = document.getElementById('scrollProgress');
+const scrollProgress = document.getElementById("scrollProgress");
 function updateScrollProgress() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  scrollProgress.style.width = pct + '%';
+  scrollProgress.style.width = pct + "%";
 }
-window.addEventListener('scroll', updateScrollProgress, { passive: true });
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
 updateScrollProgress();
 
 // Contact form -> mailto
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
+const contactForm = document.getElementById("contactForm");
+contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
   const subject = encodeURIComponent(`Portfolio contact from ${name}`);
   const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
   window.location.href = `mailto:rushikeshdev75@gmail.com?subject=${subject}&body=${body}`;
 });
 
 // Floating particle background (hero only, lightweight, respects reduced motion)
-const canvas = document.getElementById('particles');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canvas = document.getElementById("particles");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
 if (canvas && !prefersReducedMotion) {
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   let width, height, particles;
 
   function resize() {
@@ -85,13 +143,13 @@ if (canvas && !prefersReducedMotion) {
       r: Math.random() * 1.6 + 0.6,
       vx: (Math.random() - 0.5) * 0.25,
       vy: (Math.random() - 0.5) * 0.25,
-      alpha: Math.random() * 0.5 + 0.2
+      alpha: Math.random() * 0.5 + 0.2,
     }));
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    particles.forEach(p => {
+    particles.forEach((p) => {
       p.x += p.vx;
       p.y += p.vy;
       if (p.x < 0) p.x = width;
@@ -111,7 +169,7 @@ if (canvas && !prefersReducedMotion) {
   draw();
 
   let resizeTimeout;
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       resize();
